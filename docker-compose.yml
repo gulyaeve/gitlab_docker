@@ -14,11 +14,8 @@ services:
     image: sameersbn/postgresql:14-20230628
     volumes:
     - postgresql-data:/var/lib/postgresql:Z
-    environment:
-    - DB_USER=gitlab
-    - DB_PASS=password
-    - DB_NAME=gitlabhq_production
-    - DB_EXTENSION=pg_trgm,btree_gist
+    env_file:
+    - .env.pgsql
     shm_size: 512mb
 
   gitlab:
